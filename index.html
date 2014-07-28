@@ -41,7 +41,7 @@
 									<div class="servers"></div>
 								</div>
 								<div class="col-md-4">
-									<input name="input_servers" class="input_servers" style="width: 60px;">
+									<input name="input_servers" class="input_servers" style="width: 60px;" value="10">
 								</div>
 							</div>
 						</div>
@@ -52,7 +52,7 @@
 									<div class="employees"></div>
 								</div>
 								<div class="col-md-4">
-									<input name="input_employees" class="input_employees" style="width: 60px;">
+									<input name="input_employees" class="input_employees" style="width: 60px;" value="2">
 								</div>
 							</div>
 						</div>
@@ -63,7 +63,7 @@
 									<div class="salaryperemployee"></div>
 								</div>
 								<div class="col-md-4">
-									<input name="input_salary_employee" class="input_salary_employee" style="width: 60px;">
+									<input name="input_salary_employee" class="input_salary_employee" style="width: 60px;" value="80000">
 								</div>
 							</div>
 						</div>
@@ -92,9 +92,13 @@
 								$20,000 per year
 							</div>
 						</div>
-
+						<hr>
+						<div>
+							<h4>Total:<span id="your_cost"></span>/mo</h4>
+						</div>
 					</div>
 					<div class="col-md-6">
+						<div>
 						<div>
 							<h5>Number of Servers</h5>
 							<div class="row">
@@ -102,7 +106,7 @@
 									<div class="xervmon_servers"> </div>
 								</div>
 								<div class="col-md-4">
-									<input name="input_servers" class="input_xervmon_servers" style="width: 60px;">
+									<input name="input_servers" class="input_xervmon_servers" style="width: 60px;" value="10">
 								</div>
 							</div>
 						</div>
@@ -113,7 +117,7 @@
 									<div class="serveice_moniters"> </div>
 								</div>
 								<div class="col-md-4">
-									<input name="input_service_moniter" class="input_service_moniter" style="width: 60px;">
+									<input name="input_service_moniter" class="input_service_moniter" style="width: 60px;" value="0">
 								</div>
 							</div>
 						</div>
@@ -132,7 +136,15 @@
 							  </label>
 							</div>
 						</div>
+						</div>
+						<div>
+							<h4>Xervmon:<span id="xervmon_cost"></span>/mo</h4>
+						</div>
 					</div>
+				</div>
+				<hr>
+				<div>
+					<h2>You Save:<span id="you_save"></span>/yr</h2>
 				</div>
 			</div>
 			<script src="//cdnjs.cloudflare.com/ajax/libs/zepto/1.1.4/zepto.js"></script>
@@ -140,6 +152,7 @@
 			<script src="//cdn.jsdelivr.net/jquery.nouislider/6.2.0/jquery.nouislider.min.js"></script>
 			<script>
 				jQuery(document).ready(function() {
+					calcTotal();
 					jQuery('.servers').on({
 						slide : function() {
 							jQuery('.xervmon_servers').val(jQuery(this).val(), {
@@ -168,6 +181,14 @@
 							});
 						}
 					});
+					
+					jQuery('.servers , .xervmon_servers , .employees , .salaryperemployee , .serveice_moniters , [name=radio2]').on({
+						change : function() {
+							calcTotal();
+						}
+					});
+					
+					
 					jQuery(".servers").noUiSlider({
 						start : [10],
 						step : 1,
@@ -254,21 +275,41 @@
 						},
 					});
 				});
+				
+				 function addCommas(nStr) {
+				    nStr += '';
+				    x = nStr.split('.');
+				    x1 = x[0];
+				    x2 = x.length > 1 ? '.' + x[1] : '';
+				    var rgx = /(\d+)(\d{3})/;
+				    while (rgx.test(x1)) {
+				      x1 = x1.replace(rgx, '$1' + ',' + '$2');
+				    }
+				    return x1 + x2;
+				  }
+				  
 				function calcTotal() {
 					var type_cost = [0, 0.08, 0.10, 0.15];
 
-					var your_servers = $(".servers").val();
-					var your_people = $(".employees").val();
-					var your_salary = $("salaryperemployee").val();
-					var xervmon_servers = $(".xervmon_servers").val();
-					var xervmon_monitors = $(".serveice_moniters").val();
+					var your_servers = $(".input_servers").val();
+					var your_people = $(".input_employees").val();
+					var your_salary = $(".input_salary_employee").val();
+					var xervmon_servers = $(".input_xervmon_servers").val();
+					var xervmon_monitors = $(".input_service_moniter").val();
 					var type = $('[name=radio2]:checked').val() || 0;
-
+					console.log(your_servers);
+					console.log(your_people);
+					console.log(your_salary);
+					console.log(xervmon_servers);
+					console.log(xervmon_monitors);
+					console.log(type);
 					// Calculations zone
 					var yourCost = Math.round(your_people * your_salary / 12 | 0);
 					var xervmonCost = Math.round((xervmon_servers * type_cost[type]) * 730);
 					var savings = Math.max(0, (yourCost - xervmonCost) * 12);
-
+					jQuery("#your_cost").text(addCommas(yourCost));
+					jQuery("#xervmon_cost").text(addCommas(xervmonCost));
+					jQuery("#you_save").text(addCommas(savings));
 					
 				}
 			</script>
