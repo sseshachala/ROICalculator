@@ -1,0 +1,264 @@
+<!DOCTYPE html>
+<!--[if lt IE 7]>      <html class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
+<!--[if IE 7]>         <html class="no-js lt-ie9 lt-ie8"> <![endif]-->
+<!--[if IE 8]>         <html class="no-js lt-ie9"> <![endif]-->
+<!--[if gt IE 8]><!-->
+<html class="no-js">
+	<!--<![endif]-->
+	<head>
+		<meta charset="utf-8">
+		<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+		<title></title>
+		<meta name="description" content="">
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+		<link href="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css" rel="stylesheet">
+		<link rel="stylesheet" href="//cdn.jsdelivr.net/jquery.nouislider/6.2.0/jquery.nouislider.min.css">
+
+	</head>
+	<body>
+		<!--[if lt IE 7]>
+		<p class="browsehappy">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
+		<![endif]-->
+
+		<!-- Main jumbotron for a primary marketing message or call to action -->
+		<div class="jumbotron">
+			<div class="container">
+				<div class="row">
+					<div class="col-md-6">
+						<h3>Your Cost</h3>
+					</div>
+					<div class="col-md-6">
+						<h3>Xervmon Cost</h3>
+					</div>
+				</div>
+				<hr />
+				<div class="row">
+					<div class="col-md-6">
+						<div>
+							<h5>Number of Servers</h5>
+							<div class="row">
+								<div class="col-md-8">
+									<div class="servers"></div>
+								</div>
+								<div class="col-md-4">
+									<input name="input_servers" class="input_servers" style="width: 60px;">
+								</div>
+							</div>
+						</div>
+						<div>
+							<h5>Number of Employees</h5>
+							<div class="row">
+								<div class="col-md-8">
+									<div class="employees"></div>
+								</div>
+								<div class="col-md-4">
+									<input name="input_employees" class="input_employees" style="width: 60px;">
+								</div>
+							</div>
+						</div>
+						<div>
+							<h5>Average Salary per Employee</h5>
+							<div class="row">
+								<div class="col-md-8">
+									<div class="salaryperemployee"></div>
+								</div>
+								<div class="col-md-4">
+									<input name="input_salary_employee" class="input_salary_employee" style="width: 60px;">
+								</div>
+							</div>
+						</div>
+						<br />
+						<div class="row">
+							<div class="col-md-6">
+								<b> Monitoring System </b>
+							</div>
+							<div class="col-md-6">
+								$20,000 per year
+							</div>
+						</div>
+						<div class="row">
+							<div class="col-md-6">
+								<b> Help Desk </b>
+							</div>
+							<div class="col-md-6">
+								$15,000 per year
+							</div>
+						</div>
+						<div class="row">
+							<div class="col-md-6">
+								<b> 24/7 NOC </b>
+							</div>
+							<div class="col-md-6">
+								$20,000 per year
+							</div>
+						</div>
+
+					</div>
+					<div class="col-md-6">
+						<div>
+							<h5>Number of Servers</h5>
+							<div class="row">
+								<div class="col-md-8">
+									<div class="xervmon_servers"> </div>
+								</div>
+								<div class="col-md-4">
+									<input name="input_servers" class="input_xervmon_servers" style="width: 60px;">
+								</div>
+							</div>
+						</div>
+						<div>
+							<h5>Number of Service moniters</h5>
+							<div class="row">
+								<div class="col-md-8">
+									<div class="serveice_moniters"> </div>
+								</div>
+								<div class="col-md-4">
+									<input name="input_service_moniter" class="input_service_moniter" style="width: 60px;">
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+			<script src="//cdnjs.cloudflare.com/ajax/libs/zepto/1.1.4/zepto.js"></script>
+			<script src="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>
+			<script src="//cdn.jsdelivr.net/jquery.nouislider/6.2.0/jquery.nouislider.min.js"></script>
+			<script>
+				jQuery(document).ready(function() {
+					jQuery('.servers').on({
+						slide : function() {
+							jQuery('.xervmon_servers').val(jQuery(this).val(), {
+								set : true
+							});
+						}
+					});
+					jQuery('.xervmon_servers').on({
+						slide : function() {
+							jQuery('.servers').val(jQuery(this).val(), {
+								set : true
+							});
+						}
+					});
+					jQuery('.servers').on({
+						change : function() {
+							jQuery('.xervmon_servers').val(jQuery(this).val(), {
+								set : true
+							});
+						}
+					});
+					jQuery('.xervmon_servers').on({
+						change : function() {
+							jQuery('.servers').val(jQuery(this).val(), {
+								set : true
+							});
+						}
+					});
+					jQuery(".servers").noUiSlider({
+						start : [10],
+						step : 1,
+						range : {
+							'min' : [10],
+							'max' : [500]
+						},
+						serialization : {
+							decimals : 0,
+							lower : [jQuery.Link({
+								target : jQuery(".input_servers"),
+								format : {
+									decimals : 0
+								}
+							})]
+						},
+					});
+					jQuery(".xervmon_servers").noUiSlider({
+						start : [10],
+						step : 1,
+						range : {
+							'min' : [10],
+							'max' : [500]
+						},
+						serialization : {
+							decimals : 0,
+							lower : [jQuery.Link({
+								target : jQuery(".input_xervmon_servers"),
+								format : {
+									decimals : 0
+								}
+							})]
+						},
+					});
+					jQuery(".employees").noUiSlider({
+						start : [2],
+						step : 1,
+						range : {
+							'min' : [2],
+							'max' : [20]
+						},
+						serialization : {
+							decimals : 0,
+							lower : [jQuery.Link({
+								target : jQuery(".input_employees"),
+								format : {
+									decimals : 0
+								}
+							})]
+						},
+					});
+					jQuery(".salaryperemployee").noUiSlider({
+						start : [80000],
+						step : 1,
+						range : {
+							'min' : [80000],
+							'max' : [200000]
+						},
+						serialization : {
+							decimals : 0,
+							lower : [jQuery.Link({
+								target : jQuery(".input_salary_employee"),
+								format : {
+									decimals : 0
+								}
+							})]
+						},
+					});
+					jQuery(".serveice_moniters").noUiSlider({
+						start : [0],
+						step : 1,
+						range : {
+							'min' : [0],
+							'max' : [50]
+						},
+						serialization : {
+							decimals : 0,
+							lower : [jQuery.Link({
+								target : jQuery(".input_service_moniter"),
+								format : {
+									decimals : 0
+								}
+							})]
+						},
+					});
+				});
+				function calcTotal() {
+					var your_server_cost = 100;
+					var cloudnoc_monitors_cost = 0.01;
+					var type_cost = [0, 0.08, 0.10, 0.15];
+
+					var your_servers = $(".servers").val();
+					var your_people = $(".employees").val();
+					var your_salary = $("salaryperemployee").val();
+					var xervmon_servers = $(".xervmon_servers").val();
+					var xervmon_monitors = $(".serveice_moniters").val();
+					var type = $('[name=radio2]:checked').val() || 0;
+
+					// Calculations zone
+					var yourCost = Math.round(your_people * your_salary / 12 | 0);
+					var xervmonCost = Math.round((xervmon_servers * type_cost[type]) * 730);
+					var savings = Math.max(0, (yourCost - xervmonCost) * 12);
+
+					
+				}
+			</script>
+
+	</body>
+</html>
