@@ -93,56 +93,60 @@
 							</div>
 						</div>
 						<hr>
-						<div>
-							<h4>Total:<span id="your_cost"></span>/mo</h4>
-						</div>
 					</div>
 					<div class="col-md-6">
 						<div>
-						<div>
-							<h5>Number of Servers</h5>
-							<div class="row">
-								<div class="col-md-8">
-									<div class="xervmon_servers"> </div>
-								</div>
-								<div class="col-md-4">
-									<input name="input_servers" class="input_xervmon_servers" style="width: 60px;" value="10">
-								</div>
-							</div>
-						</div>
-						<div>
-							<h5>Number of Service moniters</h5>
-							<div class="row">
-								<div class="col-md-8">
-									<div class="serveice_moniters"> </div>
-								</div>
-								<div class="col-md-4">
-									<input name="input_service_moniter" class="input_service_moniter" style="width: 60px;" value="0">
+							<div>
+								<h5>Number of Servers</h5>
+								<div class="row">
+									<div class="col-md-8">
+										<div class="xervmon_servers"></div>
+									</div>
+									<div class="col-md-4">
+										<input name="input_servers" class="input_xervmon_servers" style="width: 60px;" value="10">
+									</div>
 								</div>
 							</div>
-						</div>
-						<div>
-							<h5>Select your Product</h5>
-							<div class="radio">
-							  <label>
-							    <input type="radio" name="radio2" value="2" checked>
-							    Monitoring + Remediation
-							  </label>
+							<div>
+								<h5>Number of Service moniters</h5>
+								<div class="row">
+									<div class="col-md-8">
+										<div class="serveice_moniters"></div>
+									</div>
+									<div class="col-md-4">
+										<input name="input_service_moniter" class="input_service_moniter" style="width: 60px;" value="0">
+									</div>
+								</div>
 							</div>
-							<div class="radio">
-							  <label>
-							    <input type="radio" name="radio2" value="3">
-							    Monitoring + Remediation + Management
-							  </label>
+							<div>
+								<h5>Select your Product</h5>
+								<div class="radio">
+									<label>
+										<input type="radio" name="radio2" value="1" checked>
+										Monitoring + Remediation </label>
+								</div>
+								<div class="radio">
+									<label>
+										<input type="radio" name="radio2" value="2">
+										Monitoring + Remediation + Management </label>
+								</div>
 							</div>
-						</div>
-						</div>
-						<div>
-							<h4>Xervmon:<span id="xervmon_cost"></span>/mo</h4>
 						</div>
 					</div>
 				</div>
 				<hr>
+				<div class="row">
+					<div class="col-md-6">
+						<div>
+							<h4>Total Cost:<span id="your_cost"></span>/mo</h4>
+						</div>
+					</div>
+					<div class="col-md-6">
+						<div>
+							<h4>Xervmon Cost :<span id="xervmon_cost"></span>/mo</h4>
+						</div>
+					</div>
+				</div>
 				<div>
 					<h2>You Save:<span id="you_save"></span>/yr</h2>
 				</div>
@@ -158,6 +162,61 @@
 							jQuery('.xervmon_servers').val(jQuery(this).val(), {
 								set : true
 							});
+							var serversCount = jQuery('.input_servers').val();
+							if (serversCount < 100) {
+								jQuery('.input_employees').val(2);
+								jQuery('.employees').val(2, {
+									set : true
+								});
+							}
+							if (serversCount > 100 && serversCount < 150) {
+								jQuery('.input_employees').val(3);
+								jQuery('.employees').val(3, {
+									set : true
+								});
+							}
+							if (serversCount > 150 && serversCount < 200) {
+								jQuery('.input_employees').val(4);
+								jQuery('.employees').val(4, {
+									set : true
+								});
+							}
+							if (serversCount > 200 && serversCount < 250) {
+								jQuery('.input_employees').val(5);
+								jQuery('.employees').val(5, {
+									set : true
+								});
+							}
+							if (serversCount > 250 && serversCount < 300) {
+								jQuery('.input_employees').val(6);
+								jQuery('.employees').val(6, {
+									set : true
+								});
+							}
+							if (serversCount > 300 && serversCount < 350) {
+								jQuery('.input_employees').val(7);
+								jQuery('.employees').val(7, {
+									set : true
+								});
+							}
+							if (serversCount > 350 && serversCount < 400) {
+								jQuery('.input_employees').val(8);
+								jQuery('.employees').val(8, {
+									set : true
+								});
+							}
+							if (serversCount > 400 && serversCount < 450) {
+								jQuery('.input_employees').val(9);
+								jQuery('.employees').val(9, {
+									set : true
+								});
+							}
+							if (serversCount > 450 && serversCount < 500) {
+								jQuery('.input_employees').val(10);
+								jQuery('.employees').val(10, {
+									set : true
+								});
+							}
 						}
 					});
 					jQuery('.xervmon_servers').on({
@@ -165,6 +224,61 @@
 							jQuery('.servers').val(jQuery(this).val(), {
 								set : true
 							});
+							var xervmonServersCount = jQuery('.input_xervmon_servers').val();
+							if (xervmonServersCount < 100) {
+								jQuery('.input_employees').val(2);
+								jQuery('.employees').val(2, {
+									set : true
+								});
+							}
+							if (xervmonServersCount > 100 && xervmonServersCount < 150) {
+								jQuery('.input_employees').val(3);
+								jQuery('.employees').val(3, {
+									set : true
+								});
+							}
+							if (xervmonServersCount > 150 && xervmonServersCount < 200) {
+								jQuery('.input_employees').val(4);
+								jQuery('.employees').val(4, {
+									set : true
+								});
+							}
+							if (xervmonServersCount > 200 && xervmonServersCount < 250) {
+								jQuery('.input_employees').val(5);
+								jQuery('.employees').val(5, {
+									set : true
+								});
+							}
+							if (xervmonServersCount > 250 && xervmonServersCount < 300) {
+								jQuery('.input_employees').val(6);
+								jQuery('.employees').val(6, {
+									set : true
+								});
+							}
+							if (xervmonServersCount > 300 && xervmonServersCount < 350) {
+								jQuery('.input_employees').val(7);
+								jQuery('.employees').val(7, {
+									set : true
+								});
+							}
+							if (xervmonServersCount > 350 && xervmonServersCount < 400) {
+								jQuery('.input_employees').val(8);
+								jQuery('.employees').val(8, {
+									set : true
+								});
+							}
+							if (xervmonServersCount > 400 && xervmonServersCount < 450) {
+								jQuery('.input_employees').val(9);
+								jQuery('.employees').val(9, {
+									set : true
+								});
+							}
+							if (xervmonServersCount > 450 && xervmonServersCount < 500) {
+								jQuery('.input_employees').val(10);
+								jQuery('.employees').val(10, {
+									set : true
+								});
+							}
 						}
 					});
 					jQuery('.servers').on({
@@ -181,14 +295,13 @@
 							});
 						}
 					});
-					
+
 					jQuery('.servers , .xervmon_servers , .employees , .salaryperemployee , .serveice_moniters , [name=radio2]').on({
 						change : function() {
 							calcTotal();
 						}
 					});
-					
-					
+
 					jQuery(".servers").noUiSlider({
 						start : [10],
 						step : 1,
@@ -275,19 +388,19 @@
 						},
 					});
 				});
-				
-				 function addCommas(nStr) {
-				    nStr += '';
-				    x = nStr.split('.');
-				    x1 = x[0];
-				    x2 = x.length > 1 ? '.' + x[1] : '';
-				    var rgx = /(\d+)(\d{3})/;
-				    while (rgx.test(x1)) {
-				      x1 = x1.replace(rgx, '$1' + ',' + '$2');
-				    }
-				    return x1 + x2;
-				  }
-				  
+
+				function addCommas(nStr) {
+					nStr += '';
+					x = nStr.split('.');
+					x1 = x[0];
+					x2 = x.length > 1 ? '.' + x[1] : '';
+					var rgx = /(\d+)(\d{3})/;
+					while (rgx.test(x1)) {
+						x1 = x1.replace(rgx, '$1' + ',' + '$2');
+					}
+					return x1 + x2;
+				}
+
 				function calcTotal() {
 					var type_cost = [0, 0.08, 0.10, 0.15];
 
@@ -310,7 +423,7 @@
 					jQuery("#your_cost").text(addCommas(yourCost));
 					jQuery("#xervmon_cost").text(addCommas(xervmonCost));
 					jQuery("#you_save").text(addCommas(savings));
-					
+
 				}
 			</script>
 
