@@ -47,7 +47,7 @@
 		<!-- Main jumbotron for a primary marketing message or call to action -->
 		<div class="">
 			<div class="container">
-				<h3 style="color: #000000; text-transform: none;"> Xervmon delivers more value, saves time, delivers better returns on investment and risk mitigated. Calculate ROI delivered by Xervmon Managed Services delivered by Xervmon Hybrid Cloud Platform. </h3>
+				<h3 style="color: #000000; text-transform: none;"> Xervmon delivers more value, saves time, delivers better return on investment and your risks mitigated. Calculate ROI delivered by Xervmon Managed Services delivered by Xervmon Unified Platform.</h3>
 				<div class="row" style="border-bottom: 2px solid #EEE;">
 					<div class="col-md-6">
 						<h3 style="color: #0088cc;border-right: 1px solid #EEE"><b>Your Cost</b></h3>
@@ -172,7 +172,7 @@
 					</div>
 				</div>
 				<div>
-					<h2>You Save : <b style="color: #0088cc;font-size: 36px;"><span id="you_save"></span></b>/yr</h2>
+					<h2>You Save : <b style="color: #0088cc;font-size: 36px;"><span id="you_save"> </span>/yr</b>&nbsp; that is <b style="color: #0088cc;font-size: 36px;"> <span id="you_save_percent"> </span>%</b></h2>
 				</div>
 			</div>
 			<script src="//cdnjs.cloudflare.com/ajax/libs/zepto/1.1.4/zepto.js"></script>
@@ -444,9 +444,12 @@
 					var yourCost = Math.round(your_people * your_salary / 12 | 0);
 					var xervmonCost = Math.round((xervmon_servers * type_cost[type]) * 730);
 					var savings = Math.max(0, (yourCost - xervmonCost) * 12);
+					var savingPercent = Math.round((savings/(yourCost*12))*100);
 					jQuery("#your_cost").text(addCommas(yourCost));
 					jQuery("#xervmon_cost").text(addCommas(xervmonCost));
 					jQuery("#you_save").text(addCommas(savings));
+					jQuery("#you_save_percent").text(addCommas(savingPercent));
+					
 
 				}
 			</script>
